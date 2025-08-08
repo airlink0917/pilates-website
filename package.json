@@ -1,0 +1,12 @@
+{
+  "name": "pilates-website",
+  "version": "1.0.0",
+  "description": "和モダンピラティススタジオのウェブサイト",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "build": "echo 'Static site - no build required'"
+  },
+  "keywords": ["pilates", "fitness", "wellness"],
+  "author": "",
+  "license": "ISC"
+}

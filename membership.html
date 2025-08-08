@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>月額会員申し込み - ＷＡＫＯ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/membership.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>ＷＡＫＯ</h1>
+                    <span class="logo-subtitle">Japanese Modern Pilates</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="index.html#about">ピラティスとは</a></li>
+                    <li><a href="index.html#pricing">料金</a></li>
+                    <li><a href="index.html#transformation">変化</a></li>
+                    <li><a href="index.html#reviews">お客様の声</a></li>
+                    <li><a href="index.html#contact">お問い合わせ</a></li>
+                    <li><a href="reservation.html">会員予約</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="membership-hero">
+        <div class="container">
+            <h2 class="page-title">月額会員申し込み</h2>
+            <p class="page-subtitle">継続的なトレーニングで理想の体へ</p>
+        </div>
+    </section>
+
+    <section class="membership-main">
+        <div class="container">
+            <div class="membership-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">プラン選択</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">お客様情報</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">お支払い情報</span>
+                </div>
+                <div class="step" data-step="4">
+                    <span class="step-number">4</span>
+                    <span class="step-label">確認</span>
+                </div>
+            </div>
+
+            <div class="membership-content">
+                <!-- Step 1: プラン選択 -->
+                <div class="step-content active" id="step1">
+                    <h3>ご希望のプランを選択してください</h3>
+                    <div class="plan-grid">
+                        <div class="plan-card" data-plan="basic">
+                            <h4>月4回コース</h4>
+                            <div class="plan-price">¥19,000<span>/月（税込）</span></div>
+                            <ul class="plan-features">
+                                <li>月4回のグループレッスン</li>
+                                <li>週1回のペースで無理なく継続</li>
+                                <li>オンラインレッスン見放題</li>
+                                <li>会員限定イベント参加</li>
+                                <li>レンタルマット無料</li>
+                                <li>振替レッスン可能（月2回まで）</li>
+                            </ul>
+                            <div class="plan-recommend">初心者におすすめ</div>
+                        </div>
+                        <div class="plan-card featured" data-plan="premium">
+                            <div class="featured-label">人気No.1</div>
+                            <h4>月8回コース</h4>
+                            <div class="plan-price">¥33,000<span>/月（税込）</span></div>
+                            <ul class="plan-features">
+                                <li>月8回のグループレッスン</li>
+                                <li>週2回のペースでしっかり効果実感</li>
+                                <li>オンラインレッスン見放題</li>
+                                <li>会員限定イベント参加</li>
+                                <li>レンタルマット・ウェア無料</li>
+                                <li>振替レッスン無制限</li>
+                                <li>パーソナル指導月1回付き</li>
+                            </ul>
+                            <div class="plan-recommend">本格的に取り組みたい方へ</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: お客様情報 -->
+                <div class="step-content" id="step2">
+                    <h3>お客様情報をご入力ください</h3>
+                    <form class="customer-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="lastName">姓 <span class="required">*</span></label>
+                                <input type="text" id="lastName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstName">名 <span class="required">*</span></label>
+                                <input type="text" id="firstName" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="lastNameKana">セイ <span class="required">*</span></label>
+                                <input type="text" id="lastNameKana" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="firstNameKana">メイ <span class="required">*</span></label>
+                                <input type="text" id="firstNameKana" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">メールアドレス <span class="required">*</span></label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">電話番号 <span class="required">*</span></label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthdate">生年月日 <span class="required">*</span></label>
+                            <input type="date" id="birthdate" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="gender">性別</label>
+                            <select id="gender">
+                                <option value="">選択してください</option>
+                                <option value="female">女性</option>
+                                <option value="male">男性</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="zipcode">郵便番号 <span class="required">*</span></label>
+                            <input type="text" id="zipcode" placeholder="123-4567" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">住所 <span class="required">*</span></label>
+                            <input type="text" id="address" required>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 3: お支払い情報 -->
+                <div class="step-content" id="step3">
+                    <h3>お支払い情報をご入力ください</h3>
+                    <div class="payment-info-box">
+                        <p>毎月のお支払いはクレジットカードで自動的に処理されます。</p>
+                    </div>
+                    <form class="payment-form">
+                        <div class="form-group">
+                            <label for="cardNumber">カード番号 <span class="required">*</span></label>
+                            <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardName">カード名義 <span class="required">*</span></label>
+                            <input type="text" id="cardName" placeholder="TARO YAMADA" required>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="expiryDate">有効期限 <span class="required">*</span></label>
+                                <input type="text" id="expiryDate" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cvv">セキュリティコード <span class="required">*</span></label>
+                                <input type="text" id="cvv" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+                        <div class="payment-security">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Crect x='3' y='11' width='18' height='11' rx='2' ry='2'%3E%3C/rect%3E%3Cpath d='M7 11V7a5 5 0 0 1 10 0v4'%3E%3C/path%3E%3C/svg%3E" alt="セキュリティ">
+                            <span>お支払い情報は安全に暗号化されます</span>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Step 4: 確認 -->
+                <div class="step-content" id="step4">
+                    <h3>お申し込み内容の確認</h3>
+                    <div class="confirmation-summary">
+                        <div class="summary-section">
+                            <h4>プラン情報</h4>
+                            <div class="summary-item">
+                                <span class="summary-label">選択プラン：</span>
+                                <span class="summary-value" id="confirmPlan">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">月額料金：</span>
+                                <span class="summary-value" id="confirmPrice">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">次回請求日：</span>
+                                <span class="summary-value" id="confirmNextBilling">-</span>
+                            </div>
+                        </div>
+                        <div class="summary-section">
+                            <h4>お客様情報</h4>
+                            <div class="summary-item">
+                                <span class="summary-label">お名前：</span>
+                                <span class="summary-value" id="confirmName">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">メールアドレス：</span>
+                                <span class="summary-value" id="confirmEmail">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span class="summary-label">電話番号：</span>
+                                <span class="summary-value" id="confirmPhone">-</span>
+                            </div>
+                        </div>
+                        <div class="summary-section">
+                            <h4>お支払い情報</h4>
+                            <div class="summary-item">
+                                <span class="summary-label">カード番号：</span>
+                                <span class="summary-value" id="confirmCard">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="terms-agreement">
+                        <label>
+                            <input type="checkbox" id="agreeTerms">
+                            <span>利用規約および月額会員規約に同意します</span>
+                        </label>
+                        <label>
+                            <input type="checkbox" id="agreeAutoRenewal">
+                            <span>毎月の自動更新に同意します</span>
+                        </label>
+                    </div>
+                    <div class="cancellation-policy">
+                        <h5>キャンセルポリシー</h5>
+                        <ul>
+                            <li>毎月の更新日の5日前までにキャンセル可能</li>
+                            <li>キャンセル後も当月末まで利用可能</li>
+                            <li>再入会時は入会金不要</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="membership-actions">
+                <button class="action-button back" id="backButton" style="display: none;">戻る</button>
+                <button class="action-button next" id="nextButton">次へ</button>
+                <button class="action-button submit" id="submitButton" style="display: none;">申し込みを確定する</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ＷＡＫＯ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/membership.js"></script>
+</body>
+</html>

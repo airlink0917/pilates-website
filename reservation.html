@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会員様予約ページ - ＷＡＫＯ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reservation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <h1>ＷＡＫＯ</h1>
+                    <span class="logo-subtitle">Japanese Modern Pilates</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html">ホーム</a></li>
+                    <li><a href="index.html#about">ピラティスとは</a></li>
+                    <li><a href="index.html#pricing">料金</a></li>
+                    <li><a href="index.html#transformation">変化</a></li>
+                    <li><a href="index.html#reviews">お客様の声</a></li>
+                    <li><a href="index.html#contact">お問い合わせ</a></li>
+                    <li><a href="reservation.html" class="active">会員予約</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="reservation-hero">
+        <div class="container">
+            <h2 class="page-title">会員様予約ページ</h2>
+            <p class="page-subtitle">ご希望の日時をお選びください</p>
+        </div>
+    </section>
+
+    <section class="reservation-main">
+        <div class="container">
+            <div class="reservation-steps">
+                <div class="step active" data-step="1">
+                    <span class="step-number">1</span>
+                    <span class="step-label">レッスン選択</span>
+                </div>
+                <div class="step" data-step="2">
+                    <span class="step-number">2</span>
+                    <span class="step-label">日時選択</span>
+                </div>
+                <div class="step" data-step="3">
+                    <span class="step-number">3</span>
+                    <span class="step-label">確認</span>
+                </div>
+            </div>
+
+            <div class="reservation-content">
+                <!-- Step 1: レッスン選択 -->
+                <div class="step-content active" id="step1">
+                    <h3>レッスンを選択してください</h3>
+                    <div class="lesson-grid">
+                        <div class="lesson-card" data-lesson="beginner">
+                            <h4>ビギナークラス</h4>
+                            <p class="lesson-duration">60分</p>
+                            <p class="lesson-description">初心者向けの基礎クラス。呼吸法から丁寧に指導します。</p>
+                            <p class="lesson-capacity">定員: 8名</p>
+                        </div>
+                        <div class="lesson-card" data-lesson="intermediate">
+                            <h4>ベーシッククラス</h4>
+                            <p class="lesson-duration">60分</p>
+                            <p class="lesson-description">基本的な動きをマスターした方向け。体幹を強化します。</p>
+                            <p class="lesson-capacity">定員: 8名</p>
+                        </div>
+                        <div class="lesson-card" data-lesson="advanced">
+                            <h4>アドバンスクラス</h4>
+                            <p class="lesson-duration">75分</p>
+                            <p class="lesson-description">経験者向けの応用クラス。より高度な技術を学びます。</p>
+                            <p class="lesson-capacity">定員: 6名</p>
+                        </div>
+                        <div class="lesson-card" data-lesson="private">
+                            <h4>プライベートレッスン</h4>
+                            <p class="lesson-duration">60分</p>
+                            <p class="lesson-description">マンツーマンでお客様に合わせたオーダーメイドレッスン。</p>
+                            <p class="lesson-capacity">定員: 1名</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 2: 日時選択 -->
+                <div class="step-content" id="step2">
+                    <h3>ご希望の日時を選択してください</h3>
+                    <div class="datetime-selector">
+                        <div class="calendar-container">
+                            <div class="calendar-header">
+                                <button class="calendar-nav prev" id="prevMonth">‹</button>
+                                <h4 id="currentMonth">2024年1月</h4>
+                                <button class="calendar-nav next" id="nextMonth">›</button>
+                            </div>
+                            <div class="calendar-grid" id="calendar">
+                                <!-- Calendar will be generated by JavaScript -->
+                            </div>
+                        </div>
+                        <div class="timeslots-container">
+                            <h4>時間を選択</h4>
+                            <div class="timeslots-grid" id="timeslots">
+                                <!-- Timeslots will be generated based on selected date -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step 3: 確認 -->
+                <div class="step-content" id="step3">
+                    <h3>予約内容の確認</h3>
+                    <div class="reservation-summary">
+                        <div class="summary-item">
+                            <span class="summary-label">レッスン：</span>
+                            <span class="summary-value" id="selectedLesson">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">日付：</span>
+                            <span class="summary-value" id="selectedDate">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">時間：</span>
+                            <span class="summary-value" id="selectedTime">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">インストラクター：</span>
+                            <span class="summary-value" id="selectedInstructor">山田 花子</span>
+                        </div>
+                    </div>
+                    <div class="member-info">
+                        <h4>会員情報</h4>
+                        <div class="form-group">
+                            <label for="memberName">お名前</label>
+                            <input type="text" id="memberName" placeholder="山田 太郎" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="memberEmail">メールアドレス</label>
+                            <input type="email" id="memberEmail" placeholder="example@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="memberPhone">電話番号</label>
+                            <input type="tel" id="memberPhone" placeholder="090-1234-5678" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes">備考（任意）</label>
+                            <textarea id="notes" rows="3" placeholder="ご要望などがございましたらご記入ください"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reservation-actions">
+                <button class="action-button back" id="backButton" style="display: none;">戻る</button>
+                <button class="action-button next" id="nextButton">次へ</button>
+                <button class="action-button submit" id="submitButton" style="display: none;">予約を確定する</button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 ＷＡＫＯ. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/reservation.js"></script>
+</body>
+</html>

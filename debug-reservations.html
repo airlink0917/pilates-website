@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>予約状況確認 - ＷＡＫＯ</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .debug-container {
+            max-width: 1200px;
+            margin: 100px auto;
+            padding: 20px;
+        }
+        .reservations-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .reservations-table th,
+        .reservations-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+        .reservations-table th {
+            background-color: #f5f0ea;
+        }
+        .trial-reservation {
+            background-color: #e0f2f7;
+        }
+        .member-reservation {
+            background-color: #f5f5f5;
+        }
+        .clear-button {
+            background-color: #ff4444;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .clear-button:hover {
+            background-color: #cc0000;
+        }
+    </style>
+</head>
+<body>
+    <div class="debug-container">
+        <h1>予約状況確認（デバッグ用）</h1>
+        <p>現在の予約状況を確認できます。</p>
+        
+        <table class="reservations-table">
+            <thead>
+                <tr>
+                    <th>タイプ</th>
+                    <th>日付</th>
+                    <th>時間</th>
+                    <th>名前</th>
+                    <th>メール</th>
+                    <th>レッスン</th>
+                    <th>作成日時</th>
+                </tr>
+            </thead>
+            <tbody id="reservationsList">
+                <!-- 予約データがここに表示されます -->
+            </tbody>
+        </table>
+        
+        <button class="clear-button" onclick="clearAllReservations()">すべての予約をクリア</button>
+        <button class="clear-button" style="background-color: #4CAF50;" onclick="addTestData()">テストデータを追加</button>
+        
+        <p style="margin-top: 40px;">
+            <a href="index.html">トップページに戻る</a> | 
+            <a href="reservation.html">会員予約ページ</a> | 
+            <a href="trial-reservation.html">体験予約ページ</a>
+        </p>
+    </div>
+
+    <script>
+        function loadReservations() {
+            const reservations = JSON.parse(localStorage.getItem('pilatesReservations') || '[]');
+            const tbody = document.getElementById('reservationsList');
+            tbody.innerHTML = '';
+            
+            if (reservations.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="7">予約がありません</td></tr>';
+                return;
+            }
+            
+            reservations.sort((a, b) => new Date(a.date) - new Date(b.date));
+            
+            reservations.forEach(reservation => {
+                const row = document.createElement('tr');
+                row.className = reservation.type === 'trial' ? 'trial-reservation' : 'member-reservation';
+                row.innerHTML = `
+                    <td>${reservation.type === 'trial' ? '体験' : '会員'}</td>
+                    <td>${reservation.date}</td>
+                    <td>${reservation.time}</td>
+                    <td>${reservation.name}</td>
+                    <td>${reservation.email}</td>
+                    <td>${reservation.lesson || '体験レッスン'}</td>
+                    <td>${new Date(reservation.createdAt).toLocaleString('ja-JP')}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+        
+        function clearAllReservations() {
+            if (confirm('本当にすべての予約をクリアしますか？')) {
+                localStorage.removeItem('pilatesReservations');
+                loadReservations();
+                alert('すべての予約をクリアしました。');
+            }
+        }
+        
+        function addTestData() {
+            const testReservations = [
+                {
+                    type: 'trial',
+                    date: new Date(Date.now() + 86400000).toLocaleDateString('ja-JP'),
+                    time: '10:30',
+                    name: 'テスト 太郎',
+                    email: 'test1@example.com',
+                    phone: '090-1111-1111',
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    type: 'member',
+                    lesson: 'ビギナークラス',
+                    date: new Date(Date.now() + 86400000).toLocaleDateString('ja-JP'),
+                    time: '10:30',
+                    name: '会員 花子',
+                    email: 'member1@example.com',
+                    phone: '090-2222-2222',
+                    createdAt: new Date().toISOString()
+                },
+                {
+                    type: 'member',
+                    lesson: 'ベーシッククラス',
+                    date: new Date(Date.now() + 172800000).toLocaleDateString('ja-JP'),
+                    time: '14:00',
+                    name: '会員 次郎',
+                    email: 'member2@example.com',
+                    phone: '090-3333-3333',
+                    createdAt: new Date().toISOString()
+                }
+            ];
+            
+            const existingReservations = JSON.parse(localStorage.getItem('pilatesReservations') || '[]');
+            const newReservations = [...existingReservations, ...testReservations];
+            localStorage.setItem('pilatesReservations', JSON.stringify(newReservations));
+            loadReservations();
+            alert('テストデータを追加しました。');
+        }
+        
+        // ページ読み込み時に予約を表示
+        loadReservations();
+        
+        // 5秒ごとに自動更新
+        setInterval(loadReservations, 5000);
+    </script>
+</body>
+</html>
