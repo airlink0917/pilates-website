@@ -1,0 +1,65 @@
+====================================
+GitHubへのプッシュ手順
+====================================
+
+【方法1】コマンドプロンプトから直接実行
+----------------------------------------
+1. 新しいコマンドプロンプトを開く（Windowsキー + R → cmd）
+2. 以下のコマンドを実行：
+
+cd C:\Users\user\pilates-website
+git push -u origin main
+
+3. 認証画面が表示されたら：
+   - ブラウザが開く場合：GitHubアカウントでログイン
+   - ユーザー名/パスワード入力の場合：GitHubの認証情報を入力
+
+【方法2】Personal Access Token (PAT) を使用
+--------------------------------------------
+1. GitHubでトークンを作成：
+   https://github.com/settings/tokens/new
+   
+2. 設定：
+   - Note: pilates-website
+   - Expiration: 90 days
+   - Scopes: ☑ repo（チェックを入れる）
+   
+3. 「Generate token」をクリック
+
+4. 表示されたトークン（ghp_で始まる文字列）をコピー
+
+5. コマンドプロンプトで実行：
+   cd C:\Users\user\pilates-website
+   git push https://YOUR_TOKEN@github.com/airlink0917/pilates-website.git main
+   
+   ※ YOUR_TOKENの部分をコピーしたトークンに置き換える
+
+【方法3】SSHキーを使用（上級者向け）
+------------------------------------
+1. SSHキーを生成：
+   ssh-keygen -t ed25519 -C "your_email@example.com"
+
+2. 公開鍵をGitHubに登録：
+   https://github.com/settings/keys
+
+3. リモートURLをSSHに変更：
+   git remote set-url origin git@github.com:airlink0917/pilates-website.git
+
+4. プッシュ：
+   git push -u origin main
+
+====================================
+トラブルシューティング
+====================================
+
+エラー: "Authentication failed"
+→ パスワードの代わりにPersonal Access Tokenを使用してください
+
+エラー: "Permission denied"
+→ リポジトリへの書き込み権限があることを確認してください
+
+エラー: "Repository not found"
+→ URLが正しいことを確認してください：
+  https://github.com/airlink0917/pilates-website.git
+
+====================================
