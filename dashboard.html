@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理ダッシュボード - Pilates Studio</title>
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="dashboard-container">
+        <aside class="sidebar">
+            <div class="logo">
+                <h2>Pilates Studio</h2>
+                <p>管理ダッシュボード</p>
+            </div>
+            <nav class="nav-menu">
+                <a href="#overview" class="nav-item active" data-section="overview">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="3" width="7" height="7"></rect>
+                        <rect x="14" y="14" width="7" height="7"></rect>
+                        <rect x="3" y="14" width="7" height="7"></rect>
+                    </svg>
+                    概要
+                </a>
+                <a href="#reservations" class="nav-item" data-section="reservations">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    予約管理
+                </a>
+                <a href="#members" class="nav-item" data-section="members">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="9" cy="7" r="4"></circle>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                    </svg>
+                    会員管理
+                </a>
+                <a href="#analytics" class="nav-item" data-section="analytics">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="12" y1="20" x2="12" y2="10"></line>
+                        <line x1="18" y1="20" x2="18" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="16"></line>
+                    </svg>
+                    分析
+                </a>
+                <a href="#settings" class="nav-item" data-section="settings">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M12 1v6m0 6v6m4.22-13.22l4.24 4.24M1.54 7.54l4.24 4.24m12.68 0l4.24 4.24M1.54 16.46l4.24-4.24"></path>
+                    </svg>
+                    設定
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <a href="index.html" class="logout-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                        <polyline points="16 17 21 12 16 7"></polyline>
+                        <line x1="21" y1="12" x2="9" y2="12"></line>
+                    </svg>
+                    サイトに戻る
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="dashboard-header">
+                <h1>ダッシュボード</h1>
+                <div class="header-actions">
+                    <button class="btn-refresh" onclick="location.reload()">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <polyline points="1 20 1 14 7 14"></polyline>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                        更新
+                    </button>
+                    <div class="user-info">
+                        <span>管理者</span>
+                    </div>
+                </div>
+            </header>
+
+            <section id="overview" class="dashboard-section active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                                <line x1="16" y1="2" x2="16" y2="6"></line>
+                                <line x1="8" y1="2" x2="8" y2="6"></line>
+                                <line x1="3" y1="10" x2="21" y2="10"></line>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>今日の予約</h3>
+                            <p class="stat-number" id="todayReservations">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>総会員数</h3>
+                            <p class="stat-number" id="totalMembers">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="1" x2="12" y2="23"></line>
+                                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>今月の売上</h3>
+                            <p class="stat-number">¥<span id="monthlyRevenue">0</span></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <h3>稼働率</h3>
+                            <p class="stat-number"><span id="occupancyRate">0</span>%</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activities">
+                    <h2>最近の活動</h2>
+                    <div class="activity-list" id="activityList">
+                        <p class="no-data">データがありません</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="reservations" class="dashboard-section">
+                <div class="section-header">
+                    <h2>予約管理</h2>
+                    <div class="filter-controls">
+                        <input type="date" id="dateFilter" class="date-filter">
+                        <select id="statusFilter" class="status-filter">
+                            <option value="all">すべて</option>
+                            <option value="upcoming">予定</option>
+                            <option value="completed">完了</option>
+                            <option value="cancelled">キャンセル</option>
+                        </select>
+                        <button class="btn-export" onclick="exportReservations()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                            エクスポート
+                        </button>
+                    </div>
+                </div>
+                <div class="reservations-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>日付</th>
+                                <th>時間</th>
+                                <th>名前</th>
+                                <th>レッスン</th>
+                                <th>メール</th>
+                                <th>電話</th>
+                                <th>ステータス</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="reservationsTableBody">
+                            <tr>
+                                <td colspan="8" class="no-data">予約データがありません</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="members" class="dashboard-section">
+                <div class="section-header">
+                    <h2>会員管理</h2>
+                    <div class="filter-controls">
+                        <input type="text" id="memberSearch" class="search-input" placeholder="名前またはメールで検索">
+                        <button class="btn-add" onclick="showAddMemberModal()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                            </svg>
+                            新規会員追加
+                        </button>
+                    </div>
+                </div>
+                <div class="members-table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>会員ID</th>
+                                <th>名前</th>
+                                <th>メール</th>
+                                <th>電話</th>
+                                <th>登録日</th>
+                                <th>プラン</th>
+                                <th>ステータス</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody id="membersTableBody">
+                            <tr>
+                                <td colspan="8" class="no-data">会員データがありません</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="analytics" class="dashboard-section">
+                <div class="section-header">
+                    <h2>分析</h2>
+                    <div class="period-selector">
+                        <button class="period-btn active" data-period="week">週間</button>
+                        <button class="period-btn" data-period="month">月間</button>
+                        <button class="period-btn" data-period="year">年間</button>
+                    </div>
+                </div>
+                <div class="analytics-grid">
+                    <div class="chart-container">
+                        <h3>予約推移</h3>
+                        <canvas id="reservationsChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>人気レッスン</h3>
+                        <canvas id="popularLessonsChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>時間帯別利用状況</h3>
+                        <canvas id="timeSlotChart"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <h3>売上推移</h3>
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <section id="settings" class="dashboard-section">
+                <div class="section-header">
+                    <h2>設定</h2>
+                </div>
+                <div class="settings-content">
+                    <div class="settings-group">
+                        <h3>レッスン設定</h3>
+                        <div class="setting-item">
+                            <label>最大定員数</label>
+                            <input type="number" id="maxCapacity" value="8" min="1" max="20">
+                        </div>
+                        <div class="setting-item">
+                            <label>予約受付期限（日前）</label>
+                            <input type="number" id="bookingDeadline" value="1" min="0" max="30">
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>通知設定</h3>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="emailNotifications" checked>
+                                メール通知を有効にする
+                            </label>
+                        </div>
+                        <div class="setting-item">
+                            <label>
+                                <input type="checkbox" id="smsNotifications">
+                                SMS通知を有効にする
+                            </label>
+                        </div>
+                    </div>
+                    <div class="settings-group">
+                        <h3>データ管理</h3>
+                        <button class="btn-danger" onclick="clearAllData()">すべてのデータをクリア</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal" id="editModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>予約編集</h3>
+                <button class="modal-close" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <form id="editForm">
+                    <div class="form-group">
+                        <label>名前</label>
+                        <input type="text" id="editName" required>
+                    </div>
+                    <div class="form-group">
+                        <label>メール</label>
+                        <input type="email" id="editEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label>電話番号</label>
+                        <input type="tel" id="editPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label>ステータス</label>
+                        <select id="editStatus">
+                            <option value="upcoming">予定</option>
+                            <option value="completed">完了</option>
+                            <option value="cancelled">キャンセル</option>
+                        </select>
+                    </div>
+                    <div class="modal-actions">
+                        <button type="button" class="btn-secondary" onclick="closeModal()">キャンセル</button>
+                        <button type="submit" class="btn-primary">保存</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
